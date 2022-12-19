@@ -1,29 +1,18 @@
-import { useEffect } from 'react';
-import { ResumeProvider } from './Context';
-import './App.css';
-import Header from './components/Layouts/Header';
-import Navbar from './components/Layouts/Navbar';
-import Footer from './components/Layouts/Footer';
-import Main from './components/Main';
-import WebFont from 'webfontloader';
-
+import { ResumeProvider } from "./Context";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import ExploreJobs from "./Pages/ExploreJobs";
 function App() {
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Pacifico', 'Poppins']
-      }
-    });
-  }, []);
-
   return (
     <>
       <ResumeProvider>
-        <Navbar />
-        <Header />
-        <Main />
-        <Footer />
+        <BrowserRouter>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='/explorejobs' element={<ExploreJobs />} />
+          </Routes>
+        </BrowserRouter>
       </ResumeProvider>
     </>
   );
